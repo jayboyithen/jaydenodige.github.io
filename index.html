@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayden Web Solutions</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: white;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      display: inline-block;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .language-bar {
+      text-align: center;
+      background: #e2e8f0;
+      padding: 12px 10px;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .language-bar button {
+      background: #0f172a;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      margin: 0 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .language-bar button:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 8%;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: white;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: white;
+      color: #1d4ed8;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: 8px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    section {
+      padding: 80px 8%;
+      scroll-margin-top: 120px;
+      position: relative;
+    }
+
+    .section-bg {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .section-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.60);
+      z-index: 0;
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-bg .section-title,
+    .section-bg .section-text {
+      color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+      color: #0f172a;
+    }
+
+    .section-text {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+      color: #475569;
+      font-size: 1rem;
+    }
+
+    .panel {
+      max-width: 950px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.94);
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: #334155;
+      text-align: center;
+    }
+
+    .portfolio-grid,
+    .services-grid,
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 26px;
+      border-radius: 18px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.14);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #0f172a;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: #475569;
+      font-size: 0.98rem;
+    }
+
+    .price {
+      margin-top: 14px;
+      font-weight: bold;
+      color: #1d4ed8;
+      font-size: 1.1rem;
+    }
+
+    .reason-title {
+      font-size: 1.05rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .contact-box {
+      max-width: 950px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+      border: 1px solid #e2e8f0;
+    }
+
+    .contact-info {
+      margin-bottom: 30px;
+      color: #334155;
+    }
+
+    .contact-info p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    form label {
+      font-weight: bold;
+      color: #0f172a;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 13px;
+      margin-top: 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .submit-btn {
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .en {
+      display: block;
+    }
+
+    .fr {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #0f172a;
+      color: white;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .language-bar button {
+        display: block;
+        width: 220px;
+        margin: 8px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Jayden Web Solutions</div>
+
+    <nav>
+      <a href="#about" class="en">About</a>
+      <a href="#about" class="fr">À propos</a>
+
+      <a href="#services" class="en">Services</a>
+      <a href="#services" class="fr">Services</a>
+
+      <a href="#portfolio" class="en">Portfolio</a>
+      <a href="#portfolio" class="fr">Portfolio</a>
+
+      <a href="#contact" class="en">Contact</a>
+      <a href="#contact" class="fr">Contact</a>
+    </nav>
+  </header>
+
+  <div class="language-bar">
+    <button type="button" onclick="setLanguage('en')">English</button>
+    <button type="button" onclick="setLanguage('fr')">Français</button>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge en">Simple • Professional • Affordable</div>
+      <div class="hero-badge fr">Simple • Professionnel • Abordable</div>
+
+      <h1 class="en">Professional Websites for All Businesses</h1>
+      <h1 class="fr">Sites web professionnels pour toutes les entreprises</h1>
+
+      <p class="en">
+        My name is Jayden. I build clean, modern websites that help businesses
+        look more professional online, earn trust, and attract more customers.
+      </p>
+
+      <p class="fr">
+        Je m'appelle Jayden. Je crée des sites web modernes et professionnels pour aider
+        les entreprises à mieux se présenter en ligne et attirer plus de clients.
+      </p>
+
+      <a href="#contact" class="btn en">Contact Me</a>
+      <a href="#contact" class="btn fr">Contactez-moi</a>
+
+      <a href="#services" class="btn btn-secondary en">See Services</a>
+      <a href="#services" class="btn btn-secondary fr">Voir les services</a>
+    </div>
+  </section>
+
+  <section id="about" class="section-bg" style="background-image: url('images/about.jpg');">
+    <div class="section-inner">
+      <h2 class="section-title en">About Me</h2>
+      <h2 class="section-title fr">À propos de moi</h2>
+
+      <p class="section-text en">
+        Learn more about who I am and what I do.
+      </p>
+
+      <p class="section-text fr">
+        Découvrez qui je suis et ce que je fais.
+      </p>
+
+      <div class="panel">
+        <p class="about-text en">
+          I am Jayden, a college student learning programming and web development. I created
+          this website to show my work and help businesses build a stronger online
+          presence with websites that are simple, clean, and easy for customers to use.
+        </p>
+
+        <p class="about-text fr">
+          Je suis Jayden, un étudiant qui apprend la programmation et le développement web.
+          J'ai créé ce site pour montrer mon travail et aider les entreprises à
+          améliorer leur présence en ligne avec des sites simples, propres et faciles à utiliser.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section-bg" style="background-image: url('images/Services.jpg');">
+    <div class="section-inner">
+      <h2 class="section-title en">Services</h2>
+      <h2 class="section-title fr">Services</h2>
+
+      <p class="section-text en">
+        These are the services I provide for businesses.
+      </p>
+
+      <p class="section-text fr">
+        Voici les services que je propose aux entreprises.
+      </p>
+
+      <div class="services-grid">
+        <div class="card">
+          <h3 class="en">Business Website</h3>
+          <h3 class="fr">Site web d'entreprise</h3>
+
+          <p class="en">
+            A clean and professional website with your business information, services,
+            contact details, and a strong first impression.
+          </p>
+
+          <p class="fr">
+            Un site web propre et professionnel avec les informations de votre entreprise,
+            vos services, vos coordonnées et une bonne première impression.
+          </p>
+
+          <div class="price en">$210</div>
+          <div class="price fr">210 $</div>
+        </div>
+
+        <div class="card">
+          <h3 class="en">Website Updates</h3>
+          <h3 class="fr">Mises à jour du site</h3>
+
+          <p class="en">
+            Need to change text, add photos, update pricing, or improve information?
+            I can update your site for you.
+          </p>
+
+          <p class="fr">
+            Besoin de modifier le texte, d'ajouter des photos, de changer les prix ou
+            d'améliorer les informations ? Je peux mettre votre site à jour.
+          </p>
+
+          <div class="price en">$60</div>
+          <div class="price fr">60 $</div>
+        </div>
+
+        <div class="card">
+          <h3 class="en">Google Business Help</h3>
+          <h3 class="fr">Aide Google Business</h3>
+
+          <p class="en">
+            Help adding business information, photos, and improving how your company
+            looks online.
+          </p>
+
+          <p class="fr">
+            Aide pour ajouter les informations de l'entreprise, les photos et améliorer
+            la présentation de votre entreprise en ligne.
+          </p>
+
+          <div class="price en">$110</div>
+          <div class="price fr">110 $</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-work-with-me" class="section-bg" style="background-image: url('images/why.jpg');">
+    <div class="section-inner">
+      <h2 class="section-title en">Why Work With Me</h2>
+      <h2 class="section-title fr">Pourquoi travailler avec moi</h2>
+
+      <p class="section-text en">
+        A few reasons why businesses may choose to work with me.
+      </p>
+
+      <p class="section-text fr">
+        Quelques raisons pour lesquelles les entreprises peuvent choisir de travailler avec moi.
+      </p>
+
+      <div class="reasons-grid">
+        <div class="card">
+          <div class="reason-title en">Simple and Clean Websites</div>
+          <div class="reason-title fr">Sites simples et propres</div>
+
+          <p class="en">Clear, modern pages that are easy for customers to understand and use.</p>
+          <p class="fr">Des pages claires et modernes, faciles à comprendre et à utiliser.</p>
+        </div>
+
+        <div class="card">
+          <div class="reason-title en">Bilingual Support</div>
+          <div class="reason-title fr">Support bilingue</div>
+
+          <p class="en">English, Français, and later Kreyòl support for a wider community.</p>
+          <p class="fr">Support en anglais, français et plus tard en créole pour une communauté plus large.</p>
+        </div>
+
+        <div class="card">
+          <div class="reason-title en">Affordable Pricing</div>
+          <div class="reason-title fr">Prix abordables</div>
+
+          <p class="en">Professional help for businesses at prices that are easier to manage.</p>
+          <p class="fr">Une aide professionnelle pour les entreprises à des prix plus accessibles.</p>
+        </div>
+
+        <div class="card">
+          <div class="reason-title en">Easy Communication</div>
+          <div class="reason-title fr">Communication facile</div>
+
+          <p class="en">Fast communication and simple updates when you need changes.</p>
+          <p class="fr">Communication rapide et mises à jour simples quand vous avez besoin de changements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="section-bg" style="background-image: url('images/portfolio.jpg');">
+    <div class="section-inner">
+      <h2 class="section-title en">Portfolio</h2>
+      <h2 class="section-title fr">Portfolio</h2>
+
+      <p class="section-text en">
+        Here is an example of the kind of project I can build for businesses.
+      </p>
+
+      <p class="section-text fr">
+        Voici un exemple du type de projet que je peux créer pour les entreprises.
+      </p>
+
+      <div class="portfolio-grid">
+        <div class="card">
+          <h3 class="en">My Personal Website</h3>
+          <h3 class="fr">Mon site personnel</h3>
+
+          <p class="en">
+            This website is my first portfolio project and shows the style of business
+            websites I can build.
+          </p>
+
+          <p class="fr">
+            Ce site est mon premier projet de portfolio et montre le style de sites
+            d'entreprise que je peux créer.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="en">Mike's Car Detailing</h3>
+          <h3 class="fr">Mike's Car Detailing</h3>
+
+          <p class="en">
+            A sample website for a local car detailing business with service sections,
+            pricing, and a contact area for new customers.
+          </p>
+
+          <p class="fr">
+            Un exemple de site web pour une entreprise locale de nettoyage automobile
+            avec services, prix et espace de contact pour les nouveaux clients.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-bg" style="background-image: url('images/contact.jpg');">
+    <div class="section-inner">
+      <h2 class="section-title en">Contact</h2>
+      <h2 class="section-title fr">Contact</h2>
+
+      <p class="section-text en">
+        If you need a website for your business, reach out to me below.
+      </p>
+
+      <p class="section-text fr">
+        Si vous avez besoin d'un site web pour votre entreprise, contactez-moi ci-dessous.
+      </p>
+
+      <div class="contact-box">
+        <div class="contact-info">
+          <p><strong>Name:</strong> Jayden Odige</p>
+          <p><strong>Email:</strong> jaydenodige95@gmail.com</p>
+          <p><strong>Location:</strong> United States</p>
+        </div>
+
+        <form>
+          <label class="en" for="name">Your Name</label>
+          <label class="fr" for="name">Votre nom</label>
+          <input type="text" id="name" name="name" />
+
+          <label class="en" for="email">Your Email</label>
+          <label class="fr" for="email">Votre e-mail</label>
+          <input type="email" id="email" name="email" />
+
+          <label class="en" for="business">Business Name</label>
+          <label class="fr" for="business">Nom de l'entreprise</label>
+          <input type="text" id="business" name="business" />
+
+          <label class="en" for="message">Your Message</label>
+          <label class="fr" for="message">Votre message</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+
+          <button type="submit" class="btn submit-btn en">Send Message</button>
+          <button type="submit" class="btn submit-btn fr">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="en">© 2026 Jayden Web Solutions. All rights reserved.</p>
+    <p class="fr">© 2026 Jayden Web Solutions. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    function showElements(elements) {
+      elements.forEach(function(el) {
+        const tag = el.tagName.toLowerCase();
+
+        if (tag === 'a' || tag === 'button' || tag === 'span') {
+          el.style.display = 'inline-block';
+        } else {
+          el.style.display = 'block';
+        }
+      });
+    }
+
+    function hideElements(elements) {
+      elements.forEach(function(el) {
+        el.style.display = 'none';
+      });
+    }
+
+    function setLanguage(lang) {
+      const enElements = document.querySelectorAll('.en');
+      const frElements = document.querySelectorAll('.fr');
+
+      if (lang === 'fr') {
+        hideElements(enElements);
+        showElements(frElements);
+        document.documentElement.lang = 'fr';
+      } else {
+        hideElements(frElements);
+        showElements(enElements);
+        document.documentElement.lang = 'en';
+      }
+    }
+  </script>
+</body>
+</html>
