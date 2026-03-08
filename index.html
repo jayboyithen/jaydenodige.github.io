@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayden Web Solutions</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+
+    .language-bar {
+      text-align: center;
+      background: #e2e8f0;
+      padding: 12px 10px;
+    }
+
+    .language-bar button {
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      margin: 0 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+    }
+
+    .language-bar button:hover {
+      opacity: 0.9;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 8%;
+      background: linear-gradient(135deg, #0f172a, #2563eb);
+      color: white;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: white;
+      color: #2563eb;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 8px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .section-text {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #475569;
+    }
+
+    .about,
+    .contact-box {
+      max-width: 850px;
+      margin: 0 auto;
+      background: white;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .services-grid,
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .price {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .contact-info p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .fr {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111827;
+      color: white;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .language-bar button {
+        display: block;
+        width: 200px;
+        margin: 8px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Jayden Web Solutions</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="language-bar">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('fr')">Français</button>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="en">I Build Simple Websites for Small Businesses</h1>
+      <h1 class="fr">Je crée des sites web pour les petites entreprises</h1>
+
+      <p class="en">
+        My name is Jayden. I create clean, modern websites that help local businesses
+        look professional and get more customers online.
+      </p>
+
+      <p class="fr">
+        Je m'appelle Jayden. Je crée des sites web modernes et professionnels qui aident
+        les petites entreprises à mieux se présenter en ligne et à attirer plus de clients.
+      </p>
+
+      <a href="#contact" class="btn en">Contact Me</a>
+      <a href="#contact" class="btn fr">Contactez-moi</a>
+
+      <a href="#services" class="btn btn-secondary en">See Services</a>
+      <a href="#services" class="btn btn-secondary fr">Voir les services</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title en">About Me</h2>
+    <h2 class="section-title fr">À propos de moi</h2>
+
+    <p class="section-text en">
+      I am Jayden, a college student learning programming and web development. I am
+      building my skills by creating websites that are simple, professional, and easy
+      for customers to use.
+    </p>
+
+    <p class="section-text fr">
+      Je suis Jayden, un étudiant qui apprend la programmation et le développement web.
+      Je développe mes compétences en créant des sites web simples, professionnels et
+      faciles à utiliser pour les clients.
+    </p>
+
+    <div class="about">
+      <p class="en">
+        I started this website to show my work and help small businesses build a better
+        online presence. My goal is to create websites with clear information, a strong
+        first impression, and easy contact options for customers.
+      </p>
+
+      <p class="fr">
+        J'ai créé ce site pour montrer mon travail et aider les petites entreprises à
+        améliorer leur présence en ligne. Mon objectif est de créer des sites web avec
+        des informations claires, une bonne première impression et des options de contact simples.
+      </p>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title en">Services</h2>
+    <h2 class="section-title fr">Services</h2>
+
+    <p class="section-text en">
+      These are the main services I plan to offer to local businesses.
+    </p>
+
+    <p class="section-text fr">
+      Voici les principaux services que je prévois d'offrir aux entreprises locales.
+    </p>
+
+    <div class="services-grid">
+      <div class="card">
+        <h3 class="en">Business Website</h3>
+        <h3 class="fr">Site web d'entreprise</h3>
+
+        <p class="en">A clean homepage with services, contact info, and a professional design.</p>
+        <p class="fr">Une page d'accueil claire avec services, contact et un design professionnel.</p>
+
+        <div class="price en">Starting at $150</div>
+        <div class="price fr">À partir de 150 $</div>
+      </div>
+
+      <div class="card">
+        <h3 class="en">Website Updates</h3>
+        <h3 class="fr">Mises à jour du site</h3>
+
+        <p class="en">Need changes to text, pictures, or business details? I can update it for you.</p>
+        <p class="fr">Besoin de modifier le texte, les images ou les informations de votre entreprise ? Je peux le faire pour vous.</p>
+
+        <div class="price en">Starting at $40</div>
+        <div class="price fr">À partir de 40 $</div>
+      </div>
+
+      <div class="card">
+        <h3 class="en">Google Business Help</h3>
+        <h3 class="fr">Aide Google Business</h3>
+
+        <p class="en">Help adding business information, photos, and better presentation online.</p>
+        <p class="fr">Aide pour ajouter les informations de l'entreprise, les photos et améliorer la présentation en ligne.</p>
+
+        <div class="price en">Starting at $60</div>
+        <div class="price fr">À partir de 60 $</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2 class="section-title en">Portfolio</h2>
+    <h2 class="section-title fr">Portfolio</h2>
+
+    <p class="section-text en">
+      These are sample projects. Later, you can replace these with real client work.
+    </p>
+
+    <p class="section-text fr">
+      Ce sont des projets d'exemple. Plus tard, vous pourrez les remplacer par de vrais projets clients.
+    </p>
+
+    <div class="portfolio-grid">
+      <div class="card">
+        <h3 class="en">My Personal Website</h3>
+        <h3 class="fr">Mon site personnel</h3>
+
+        <p class="en">This website is my first portfolio project and shows the kind of pages I can build.</p>
+        <p class="fr">Ce site est mon premier projet de portfolio et montre le type de pages que je peux créer.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="en">Sample Business Site</h3>
+        <h3 class="fr">Exemple de site d'entreprise</h3>
+
+        <p class="en">A demo website for a local business with services, contact, and a simple homepage layout.</p>
+        <p class="fr">Un site de démonstration pour une entreprise locale avec services, contact et une page d'accueil simple.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+  <h2 class="section-title en">Contact</h2>
+  <h2 class="section-title fr">Contact</h2>
+
+  <p class="section-text en">
+    If you need a website for your business, reach out to me.
+  </p>
+
+  <p class="section-text fr">
+    Si vous avez besoin d'un site web pour votre entreprise, contactez-moi.
+  </p>
+
+  <div class="contact-box">
+    <div class="contact-info" style="margin-bottom: 30px;">
+      <p><strong>Name:</strong> Jayden Odige</p>
+      <p><strong>Email:</strong> jaydenodige95@gmail.com</p>
+      <p><strong>Phone:</strong> 941-877-4747</p>
+      <p><strong>Location:</strong> Florida</p>
+    </div>
+
+    <form>
+      <div style="margin-bottom: 15px;">
+        <label for="name" class="en"><strong>Your Name</strong></label>
+        <label for="name" class="fr"><strong>Votre nom</strong></label>
+        <input type="text" id="name" name="name" style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #cbd5e1; border-radius: 8px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="email" class="en"><strong>Your Email</strong></label>
+        <label for="email" class="fr"><strong>Votre e-mail</strong></label>
+        <input type="email" id="email" name="email" style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #cbd5e1; border-radius: 8px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="business" class="en"><strong>Business Name</strong></label>
+        <label for="business" class="fr"><strong>Nom de l'entreprise</strong></label>
+        <input type="text" id="business" name="business" style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #cbd5e1; border-radius: 8px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="message" class="en"><strong>Your Message</strong></label>
+        <label for="message" class="fr"><strong>Votre message</strong></label>
+        <textarea id="message" name="message" rows="5" style="width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #cbd5e1; border-radius: 8px;"></textarea>
+      </div>
+
+      <button type="submit" class="btn en" style="border: none; cursor: pointer;">Send Message</button>
+      <button type="submit" class="btn fr" style="border: none; cursor: pointer;">Envoyer le message</button>
+    </form>
+  </div>
+</section>
